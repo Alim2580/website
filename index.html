@@ -17,7 +17,7 @@
             color: #202124;
         }
 
-        /* হেডার বা নেভিগেশন বার */
+        /* হেডার */
         header {
             display: flex;
             align-items: center;
@@ -33,7 +33,7 @@
         .logo {
             font-size: 22px;
             font-weight: bold;
-            color: #01875f; /* প্লে স্টোরের সিগনেচার গ্রিন কালার */
+            color: #01875f;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -41,7 +41,6 @@
 
         .search-bar {
             width: 40%;
-            position: relative;
         }
 
         .search-bar input {
@@ -52,12 +51,6 @@
             background-color: #f1f3f4;
             font-size: 16px;
             outline: none;
-        }
-
-        .search-bar input:focus {
-            background-color: #fff;
-            box-shadow: 0 1px 6px rgba(32,33,36,0.28);
-            border-color: transparent;
         }
 
         /* মেইন কন্টেইনার */
@@ -71,24 +64,21 @@
             font-size: 24px;
             font-weight: 600;
             margin-bottom: 20px;
-            color: #202124;
         }
 
-        /* অ্যাপ গ্রিড লেআউট */
+        /* অ্যাপ গ্রিড */
         .app-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             gap: 25px;
         }
 
-        /* সিঙ্গেল অ্যাপ কার্ড */
+        /* অ্যাপ কার্ড */
         .app-card {
             display: flex;
             flex-direction: column;
             cursor: pointer;
             transition: transform 0.2s;
-            text-decoration: none;
-            color: inherit;
         }
 
         .app-card:hover {
@@ -123,51 +113,153 @@
         .app-rating {
             font-size: 12px;
             font-weight: bold;
-            color: #202124;
             display: flex;
             align-items: center;
             gap: 4px;
         }
 
-        .download-btn {
+        .view-btn {
             margin-top: 8px;
-            background-color: #01875f;
-            color: white;
+            background-color: #f1f3f4;
+            color: #01875f;
             text-align: center;
             padding: 8px;
             border-radius: 6px;
             font-size: 13px;
             font-weight: bold;
-            transition: background 0.2s;
         }
 
-        .download-btn:hover {
+        /* মডাল বা পপআপ উইন্ডো (Details Window) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 600px;
+            max-height: 85vh;
+            border-radius: 16px;
+            padding: 25px;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #5f6368;
+        }
+
+        /* মডাল অ্যাপ ইনফো */
+        .modal-header {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .modal-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            object-fit: cover;
+        }
+
+        .modal-app-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .modal-meta {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+            padding: 10px 0;
+            border-top: 1px solid #f1f3f4;
+            border-bottom: 1px solid #f1f3f4;
+            font-size: 13px;
+            color: #5f6368;
+        }
+
+        .meta-item strong {
+            color: #202124;
+            display: block;
+            font-size: 15px;
+        }
+
+        /* স্ক্রিনশট গ্যালারি */
+        .screenshot-container {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            margin-bottom: 20px;
+            padding-bottom: 5px;
+        }
+
+        .screenshot-container img {
+            height: 200px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 1px solid #e0e0e0;
+        }
+
+        /* ডিটেইলস টেক্সট */
+        .modal-description {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #5f6368;
+            margin-bottom: 25px;
+        }
+
+        /* মডাল ডাউনলোড বাটন */
+        .modal-download-btn {
+            display: block;
+            background-color: #01875f;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .modal-download-btn:hover {
             background-color: #006648;
         }
 
-        /* রেসপনসিভ ডিজাইন (মোবাইলের জন্য) */
+        /* মোবাইলের জন্য */
         @media (max-width: 768px) {
-            header {
-                padding: 10px 15px;
-            }
-            .search-bar {
-                display: none; /* মোবাইলে সার্চ বার হাইড করা হয়েছে সিম্পল রাখার জন্য */
-            }
-            .app-grid {
-                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-                gap: 15px;
-            }
-            .app-icon {
-                border-radius: 16px;
-            }
-            .app-name {
-                font-size: 13px;
-            }
+            .search-bar { display: none; }
+            .app-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 15px; }
+            .modal-content { width: 95%; padding: 15px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- হেডার -->
     <header>
         <div class="logo">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -177,50 +269,113 @@
             </svg>
             Play Store
         </div>
-        <div class="search-bar">
-            <input type="text" placeholder="অ্যাপ এবং গেম খুঁজুন...">
-        </div>
-        <div style="width: 40px;"></div> </header>
+        <div class="search-bar"><input type="text" placeholder="অ্যাপ এবং গেম খুঁজুন..."></div>
+        <div style="width: 40px;"></div>
+    </header>
 
+    <!-- মেইন কন্টেন্ট -->
     <div class="container">
         <h2 class="section-title">জনপ্রিয় অ্যাপস</h2>
         
         <div class="app-grid">
             
-            <div class="app-card">
-                <img src="https://via.placeholder.com/150" alt="App Icon" class="app-icon">
+            <!-- অ্যাপ ১ (ডেটা অ্যাট্রিবিউটসহ) -->
+            <div class="app-card" onclick="openAppDetails(this)" 
+                 data-name="Facebook"
+                 data-dev="Meta Platforms, Inc."
+                 data-rating="৪.১ ★"
+                 data-size="৪৫ MB"
+                 data-downloads="৫ বিলিয়ন+"
+                 data-icon="https://via.placeholder.com/150/0000FF/FFFFFF?text=Facebook"
+                 data-ss1="https://via.placeholder.com/150x250/0000FF/FFFFFF?text=FB+SS+1"
+                 data-ss2="https://via.placeholder.com/150x250/0000FF/FFFFFF?text=FB+SS+2"
+                 data-desc="বন্ধুদের সাথে যোগাযোগ রাখুন আগের চেয়েও সহজে। ছবি ও ভিডিও শেয়ার করুন, বন্ধুদের স্ট্যাটাস দেখুন এবং আপনার পছন্দের কমিউনিটির সাথে যুক্ত থাকুন।"
+                 data-link="YOUR_FB_APK_LINK">
+                <img src="https://via.placeholder.com/150/0000FF/FFFFFF?text=Facebook" alt="Icon" class="app-icon">
                 <div class="app-name">Facebook</div>
                 <div class="app-developer">Meta Platforms, Inc.</div>
                 <div class="app-rating">৪.১ ★</div>
-                <a href="YOUR_APK_DOWNLOAD_LINK_HERE" class="download-btn">ডাউনলোড</a>
+                <div class="view-btn">বিস্তারিত দেখুন</div>
             </div>
 
-            <div class="app-card">
-                <img src="https://via.placeholder.com/150" alt="App Icon" class="app-icon">
+            <!-- অ্যাপ ২ -->
+            <div class="app-card" onclick="openAppDetails(this)" 
+                 data-name="WhatsApp Messenger"
+                 data-dev="WhatsApp LLC"
+                 data-rating="৪.৩ ★"
+                 data-size="৩৫ MB"
+                 data-downloads="৫ বিলিয়ন+"
+                 data-icon="https://via.placeholder.com/150/00FF00/FFFFFF?text=WhatsApp"
+                 data-ss1="https://via.placeholder.com/150x250/00FF00/FFFFFF?text=WA+SS+1"
+                 data-ss2="https://via.placeholder.com/150x250/00FF00/FFFFFF?text=WA+SS+2"
+                 data-desc="হোয়াটসঅ্যাপ হলো একটি ফ্রি মেসেজিং এবং ভিডিও কলিং অ্যাপ। এটি অত্যন্ত সুরক্ষিত, নির্ভরযোগ্য এবং ব্যক্তিগত, যা দিয়ে সহজে প্রিয়জনদের সাথে যোগাযোগ রাখা যায়।"
+                 data-link="YOUR_WHATSAPP_APK_LINK">
+                <img src="https://via.placeholder.com/150/00FF00/FFFFFF?text=WhatsApp" alt="Icon" class="app-icon">
                 <div class="app-name">WhatsApp Messenger</div>
                 <div class="app-developer">WhatsApp LLC</div>
                 <div class="app-rating">৪.৩ ★</div>
-                <a href="YOUR_APK_DOWNLOAD_LINK_HERE" class="download-btn">ডাউনলোড</a>
-            </div>
-
-            <div class="app-card">
-                <img src="https://via.placeholder.com/150" alt="App Icon" class="app-icon">
-                <div class="app-name">Subway Surfers</div>
-                <div class="app-developer">SYBO Games</div>
-                <div class="app-rating">৪.6 ★</div>
-                <a href="YOUR_APK_DOWNLOAD_LINK_HERE" class="download-btn">ডাউনলোড</a>
-            </div>
-
-            <div class="app-card">
-                <img src="https://via.placeholder.com/150" alt="App Icon" class="app-icon">
-                <div class="app-name">BKash App</div>
-                <div class="app-developer">bKash Limited</div>
-                <div class="app-rating">৪.৪ ★</div>
-                <a href="YOUR_APK_DOWNLOAD_LINK_HERE" class="download-btn">ডাউনলোড</a>
+                <div class="view-btn">বিস্তারিত দেখুন</div>
             </div>
 
         </div>
     </div>
 
+    <!-- পপআপ মডাল স্ট্রাকচার -->
+    <div class="modal-overlay" id="appModal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-btn" onclick="closeModal(force=true)">&times;</span>
+            
+            <div class="modal-header">
+                <img id="m-icon" src="" alt="App Icon" class="modal-icon">
+                <div>
+                    <div id="m-name" class="modal-app-title">App Name</div>
+                    <div id="m-dev" style="color: #01875f; font-weight: 500; font-size: 14px;">Developer</div>
+                </div>
+            </div>
+
+            <div class="modal-meta">
+                <div class="meta-item"><strong id="m-rating">0.0 ★</strong>রিভিউ</div>
+                <div class="meta-item"><strong id="m-size">00 MB</strong>সাইজ</div>
+                <div class="meta-item"><strong id="m-down">0M+</strong>ডাউনলোড</div>
+            </div>
+
+            <h3 style="font-size: 16px; margin-bottom: 10px;">স্ক্রিনশট সমূহ</h3>
+            <div class="screenshot-container">
+                <img id="m-ss1" src="" alt="Screenshot 1">
+                <img id="m-ss2" src="" alt="Screenshot 2">
+            </div>
+
+            <h3 style="font-size: 16px; margin-bottom: 10px;">অ্যাপের বিবরণ</h3>
+            <div id="m-desc" class="modal-description">Description goes here...</div>
+
+            <a id="m-link" href="#" class="modal-download-btn" target="_blank">ডাউনলোড APK</a>
+        </div>
+    </div>
+
+    <!-- জাভাস্ক্রিপ্ট লজিক -->
+    <script>
+        function openAppDetails(card) {
+            // কার্ডের ডেটাগুলো পপআপে সেট করা হচ্ছে
+            document.getElementById('m-name').innerText = card.getAttribute('data-name');
+            document.getElementById('m-dev').innerText = card.getAttribute('data-dev');
+            document.getElementById('m-rating').innerText = card.getAttribute('data-rating');
+            document.getElementById('m-size').innerText = card.getAttribute('data-size');
+            document.getElementById('m-down').innerText = card.getAttribute('data-downloads');
+            document.getElementById('m-icon').src = card.getAttribute('data-icon');
+            document.getElementById('m-ss1').src = card.getAttribute('data-ss1');
+            document.getElementById('m-ss2').src = card.getAttribute('data-ss2');
+            document.getElementById('m-desc').innerText = card.getAttribute('data-desc');
+            document.getElementById('m-link').href = card.getAttribute('data-link');
+
+            // পপআপ শো করা
+            document.getElementById('appModal').classList.add('active');
+            document.body.style.overflow = 'hidden'; // ব্যাকগ্রাউন্ড স্ক্রল বন্ধ
+        }
+
+        function closeModal(event, force=false) {
+            document.getElementById('appModal').classList.remove('active');
+            document.body.style.overflow = 'auto'; // ব্যাকগ্রাউন্ড স্ক্রল চালু
+        }
+    </script>
 </body>
 </html>
